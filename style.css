@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f0f4f8; /* Soft light-blue/gray background */
+    padding-top: 4em;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+    max-width: 420px; /* Perfect sizing for mobile & desktop card view */
+    padding: 0 1em;
+}
+
+/* Search Layout */
+.search-form {
+    display: flex;
+    gap: 0.5em;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 0.8em 1em;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.search-form input:focus {
+    border-color: #3b82f6; /* Highlight blue on focus */
+}
+
+.search-form button {
+    padding: 0.8em 1.2em;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-form button:hover {
+    background-color: #2563eb;
+}
+
+/* Weather Dashboard Card */
+.weather-card {
+    background-color: white;
+    padding: 2.5em 2em;
+    border-radius: 16px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05); /* Soft premium shadow */
+    text-align: center;
+}
+
+.main-info {
+    margin-bottom: 2.5em;
+}
+
+.location-name {
+    font-size: 2rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.weather-condition {
+    color: #64748b;
+    font-size: 1rem;
+    margin-top: 0.2em;
+    text-transform: capitalize;
+}
+
+.temperature {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0.1em;
+}
+
+/* Data Grid Grid */
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 2em;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.detail-item .label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #334155;
+}

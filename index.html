@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="weather-container">
+        <!-- Search Bar Form -->
+        <form class="search-form">
+            <input 
+                type="text" 
+                name="city-name" 
+                placeholder="Enter city name..." 
+                pattern="^[A-Za-z\s]+$" 
+                title="Please enter letters only"
+                required
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Main Weather Dashboard Card -->
+        <div class="weather-card">
+            <div class="main-info">
+                <h1 class="location-name">Addis Ababa</h1>
+                <p class="weather-condition">Partly Cloudy</p>
+                <div class="temperature">24°C</div>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="label">Humidity</span>
+                    <span class="value" id="humidity">62%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Wind</span>
+                    <span class="value" id="wind">12 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Visibility</span>
+                    <span class="value" id="visibility">10 km</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
