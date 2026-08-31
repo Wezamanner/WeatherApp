@@ -40,6 +40,7 @@ const unitChangeBtn = document.querySelector(`.unit-btn`)
 
 unitChangeBtn.addEventListener(`click`,async ()=>{
 currentunit = toggleScale(currentunit)
+loading.classList.remove("hidden");
     const infoReturned =  await weatherApIFetch(cityName,currentunit);
         console.log(infoReturned);
         city.textContent=  infoReturned.location;
@@ -48,7 +49,7 @@ currentunit = toggleScale(currentunit)
         humidity.textContent= infoReturned.humidity + `%`;
         wind.textContent= infoReturned.windSpeed;
         visiblity.textContent= infoReturned.visibility;
-
+    loading.classList.add(`hidden`)
 
 })
 
@@ -56,6 +57,7 @@ form.addEventListener(`submit`,async (event)=>{
     event.preventDefault();
     let data = new FormData(form)
       cityName = data.get("city-name");
+      loading.classList.remove("hidden");
       const infoReturned =  await weatherApIFetch(cityName,currentunit);
         console.log(infoReturned);
         city.textContent=  infoReturned.location;
@@ -64,7 +66,7 @@ form.addEventListener(`submit`,async (event)=>{
         humidity.textContent= infoReturned.humidity + `%`;
         wind.textContent= infoReturned.windSpeed;
         visiblity.textContent= infoReturned.visibility;
-
+        loading.classList.add(`hidden`)
 
 
     form.reset()
@@ -74,3 +76,4 @@ function toggleScale(unit){
 }
 
 //////////////////////////////////////////////////////////
+const loading = document.querySelector(`.loading`)
