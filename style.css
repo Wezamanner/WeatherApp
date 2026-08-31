@@ -118,3 +118,14 @@ body {
     font-weight: 600;
     color: #334155;
 }
+.unit-btn{
+        padding: 0.9em 1.5em;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+   
+}

@@ -1,7 +1,7 @@
 
- async function weatherApIFetch(Location){
+ async function weatherApIFetch(Location,unit){
     try{
-const respone = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(Location)}?unitGroup=metric&include=current&key=AVKCCPVFKY7EJSH4MVGE763BS&contentType=json`
+const respone = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(Location)}?unitGroup=${unit}&include=current&key=AVKCCPVFKY7EJSH4MVGE763BS&contentType=json`
         );
 const data = await respone.json();
 
@@ -35,27 +35,42 @@ const condition = document.querySelector(`.weather-condition`)
 const humidity = document.querySelector(`#humidity`)
 const wind = document.querySelector(`#wind`)
 const visiblity =document.querySelector("#visibility");
+let currentunit ="metric";
+const unitChangeBtn = document.querySelector(`.unit-btn`)
+
+unitChangeBtn.addEventListener(`click`,async ()=>{
+currentunit = toggleScale(currentunit)
+    const infoReturned =  await weatherApIFetch(cityName,currentunit);
+        console.log(infoReturned);
+        city.textContent=  infoReturned.location;
+        temperature.textContent=  infoReturned.temperature + (currentunit=="metric"?  "°C":"°F");
+        condition.textContent=  infoReturned.conditions;
+        humidity.textContent= infoReturned.humidity + `%`;
+        wind.textContent= infoReturned.windSpeed;
+        visiblity.textContent= infoReturned.visibility;
+
+
+})
 
 form.addEventListener(`submit`,async (event)=>{
     event.preventDefault();
     let data = new FormData(form)
       cityName = data.get("city-name");
-    
-      const infoReturned =  await weatherApIFetch(cityName);
+      const infoReturned =  await weatherApIFetch(cityName,currentunit);
         console.log(infoReturned);
         city.textContent=  infoReturned.location;
-        temperature.textContent= await infoReturned.temperature+`°C`;
-        condition.textContent= await infoReturned.conditions;
-        humidity.textContent= await infoReturned.humidity + `%`;
-        wind.textContent=await infoReturned.windSpeed;
-        visiblity.textContent=await infoReturned.visibility;
+        temperature.textContent=  infoReturned.temperature+(currentunit=="metric"?  "°C":"°F");
+        condition.textContent=  infoReturned.conditions;
+        humidity.textContent= infoReturned.humidity + `%`;
+        wind.textContent= infoReturned.windSpeed;
+        visiblity.textContent= infoReturned.visibility;
 
 
 
     form.reset()
 })
-function toggleScale(scale){
-    return !scale? "°C" : "°F"
+function toggleScale(unit){
+    return unit=="metric"? "us" : "metric"
 }
 
 //////////////////////////////////////////////////////////
